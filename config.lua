@@ -36,16 +36,18 @@ location = "Pretoria, South Africa"
 -- single file, but more can be specified, if needed.
 -- NOTE: The order of the list matters.
 abstract_includes =
-  { "content/abstract.tex"
-  }
+   { "content/abstract.tex"
+   }
 
 -- The list of file to include in the document creation. This list
 -- will be included verbatim. That is, the order of the list items
 -- does matter.
 main_includes =
-  { "content/t.tex"
-  , "content/x.tex"
-  }
+   { "content/t.tex"
+   , "content/x.tex"
+   }
+
+appendix_includes = { "content/appendix.tex" }
 
 degree = {
    msc = {

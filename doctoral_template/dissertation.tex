@@ -22,7 +22,6 @@
 \usepackage{url}													% URL typesetting
 \usepackage{texnames}											% BIBTeX, SliTeX, AMSTeX, PiCTeX and TeXsis logos
 \usepackage{verbatim}											% multi-line comments
-%\usepackage{ifpdf}												% selective setup for PDF compilation
 \usepackage[number=none]{glossary}							% glossary file environments
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,10 +29,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\noopsort}[1]{}
-
-%\ifpdf
-
-% PDFLaTeX-specific packages
 
 \usepackage[
 	pdftex,															% hyperlinked references for PDF output
@@ -81,16 +76,6 @@
 %\pdfadjustspacing=1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%       DVI/PostScript-Specific setup       %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \else
-
-% \usepackage{graphicx}											% EPS graphics
-
-% \fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                  Lengths                  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -100,14 +85,8 @@
 \setlength{\unitlength}{1pt}
 \setlength{\footnotesep}{5mm}
 
-%\ifpdf
-	% ensure PDF is centered in display
-	\setlength{\hoffset}{-10.5mm}
-% \else
-% 	% add gutter margin for DVI/PostScript
-% 	\setlength{\hoffset}{-10.5mm}
-% 	\addtolength{\hoffset}{4.5mm}
-% \fi
+% ensure PDF is centered in display
+\setlength{\hoffset}{-10.5mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%               Line Spacing                %%%
@@ -131,11 +110,7 @@
 \renewcommand{\gloskip}{}
 \setlength{\namewidth}{79pt}
 
-%\ifpdf
-	\newcommand{\idxbf}[1]{\textbf{\hyperpage{#1}}}
-% \else
-% 	\newcommand{\idxbf}[1]{\textbf{#1}}
-% \fi
+\newcommand{\idxbf}[1]{\textbf{\hyperpage{#1}}}
 
 \makeglossary
 \makeindex
@@ -206,9 +181,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\ifpdf
 \hypersetup{pageanchor=true}									% (option) turn page referencing back on for chapters
-%\fi
 
 \pagestyle{fancy}
 \fancypagestyle{headings}{
@@ -225,9 +198,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-%\ifpdf
 \phantomsection
-%\fi
+
 \label{bibliography}
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{plain}
@@ -236,21 +208,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\appendix
-% \include{appendices/appendix1/main}
-% \include{appendices/appendix2/main}
-% % any further appendices you decide to write (create appropriate directory structure, as with chapters)
-% \include{appendices/acronyms/main}
-% \include{appendices/symbols/main}
-% \include{appendices/derived_publications/main}
+\appendix
+\directlua{input_all(appendix_includes)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-%\ifpdf
 \phantomsection
-%\fi
 \label{index}
 \addcontentsline{toc}{chapter}{Index}
 \printindex

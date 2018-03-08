@@ -65,11 +65,7 @@
 \begin{center}by\end{center}
 \begin{center}
 	{\directlua{value(author)}}\\
-%	\ifpdf
 		E-mail: \href{mailto:\directlua{value(email)}}{\directlua{value(email)}}
-%	\else
-%		E-mail: jtbloggs@somewhere.co.za
-%	\fi
 \end{center}
 \vspace{1cm}
 \begin{center}{\large\bf Abstract}\end{center}
@@ -136,18 +132,14 @@ Another Quote attribution or source (1890)
 \pagestyle{plain}
 \pagenumbering{roman}
 \setcounter{page}{1}
-\ifpdf
 \pdfbookmark[0]{Contents}{contents}
-\fi
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
 \phantomsection
-\fi
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
@@ -155,9 +147,7 @@ Another Quote attribution or source (1890)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
 \phantomsection
-\fi
 \addcontentsline{toc}{chapter}{List of Graphs}
 \listof{graph}{List of Graphs}
 
@@ -165,9 +155,7 @@ Another Quote attribution or source (1890)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
 \phantomsection
-\fi
 \addcontentsline{toc}{chapter}{List of Algorithms}
 \listof{algorithm}{List of Algorithms}
 
@@ -175,9 +163,7 @@ Another Quote attribution or source (1890)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
 \phantomsection
-\fi
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 

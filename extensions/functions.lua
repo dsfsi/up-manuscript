@@ -1,8 +1,20 @@
 require "../config.lua"
 
+function tablelength(T)
+   local count = 0
+   for a in pairs(T) do
+      if not a then
+         count = count + 1
+      end
+   end
+   return count
+end
+
 function input_all(list)
    for _, i in ipairs(list) do
-      tex.sprint("\\input{../" .. i .. "}")
+      if i then
+         tex.sprint("\\input{../" .. i .. "}")
+      end
    end
 end
 
