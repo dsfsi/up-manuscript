@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -e .phd ]; then
+    cd doctoral_template && latexmk dissertation.tex && cd ..
+elif [ -e .msc ]; then
+    cd masters_template && latexmk && cd ..
+else
+    echo "Please create a .phd or a .msc file to select the appropriate template"
+    exit 1
+fi

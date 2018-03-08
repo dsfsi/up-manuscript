@@ -1,3 +1,5 @@
+\directlua{dofile("../extensions/functions.lua")}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%              Document Class               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,6 +12,8 @@
 %%%   Basic Packages and Package Settings     %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\usepackage{luatex85}
+
 \usepackage{float}												% customised float support
 \usepackage{fancyhdr}											% improved header and footer support
 \usepackage{amssymb}												% American Mathematical Society symbols
@@ -18,14 +22,16 @@
 \usepackage{url}													% URL typesetting
 \usepackage{texnames}											% BIBTeX, SliTeX, AMSTeX, PiCTeX and TeXsis logos
 \usepackage{verbatim}											% multi-line comments
-\usepackage{ifpdf}												% selective setup for PDF compilation
+%\usepackage{ifpdf}												% selective setup for PDF compilation
 \usepackage[number=none]{glossary}							% glossary file environments
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%          PDFLaTeX-Specific setup          %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifpdf
+\newcommand{\noopsort}[1]{}
+
+%\ifpdf
 
 % PDFLaTeX-specific packages
 
@@ -62,25 +68,27 @@
 % PDF meta-data settings
 
 \hypersetup{
-	pdftitle    = {A Very Long Ph.D Dissertation With a Long Title},
-	pdfauthor   = {Joseph Thomas Bloggs <jtbloggs@somewhere.co.za>},
+	pdftitle    = {\directlua{value(title)}},
+	pdfauthor   = {\directlua{value(author)} <\directlua{value(email)}>},
 	pdfsubject  = {Some sort of subject (e.g. Data mining)},
 	pdfkeywords = {First keyword, second keyword, third keyword},
 }
 
 % force LaTeX-compliant spacing
+%\directlua { tex.enableprimitives('',tex.extraprimitives()) }
 
-\pdfadjustspacing=1
+
+%\pdfadjustspacing=1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%       DVI/PostScript-Specific setup       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\else
+% \else
 
-\usepackage{graphicx}											% EPS graphics
+% \usepackage{graphicx}											% EPS graphics
 
-\fi
+% \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                  Lengths                  %%%
@@ -92,14 +100,14 @@
 \setlength{\unitlength}{1pt}
 \setlength{\footnotesep}{5mm}
 
-\ifpdf
+%\ifpdf
 	% ensure PDF is centered in display
 	\setlength{\hoffset}{-10.5mm}
-\else
-	% add gutter margin for DVI/PostScript
-	\setlength{\hoffset}{-10.5mm}
-	\addtolength{\hoffset}{4.5mm}
-\fi
+% \else
+% 	% add gutter margin for DVI/PostScript
+% 	\setlength{\hoffset}{-10.5mm}
+% 	\addtolength{\hoffset}{4.5mm}
+% \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%               Line Spacing                %%%
@@ -123,11 +131,11 @@
 \renewcommand{\gloskip}{}
 \setlength{\namewidth}{79pt}
 
-\ifpdf
+%\ifpdf
 	\newcommand{\idxbf}[1]{\textbf{\hyperpage{#1}}}
-\else
-	\newcommand{\idxbf}[1]{\textbf{#1}}
-\fi
+% \else
+% 	\newcommand{\idxbf}[1]{\textbf{#1}}
+% \fi
 
 \makeglossary
 \makeindex
@@ -198,9 +206,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifpdf
+%\ifpdf
 \hypersetup{pageanchor=true}									% (option) turn page referencing back on for chapters
-\fi
+%\fi
 
 \pagestyle{fancy}
 \fancypagestyle{headings}{
@@ -211,19 +219,15 @@
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 
-\include{chapters/introduction/main}
-\include{chapters/chapter1/main} % rename as required (but remember to update directories appropriately)
-\include{chapters/chapter2/main} % rename as required (but remember to update directories appropriately)
-% add all other chapters you decide to write (also create an appropriate directory structure)
-\include{chapters/conclusions/main}
+\directlua{input_all(main_includes)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
+%\ifpdf
 \phantomsection
-\fi
+%\fi
 \label{bibliography}
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{plain}
@@ -232,21 +236,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\appendix
-\include{appendices/appendix1/main}
-\include{appendices/appendix2/main}
-% any further appendices you decide to write (create appropriate directory structure, as with chapters)
-\include{appendices/acronyms/main}
-\include{appendices/symbols/main}
-\include{appendices/derived_publications/main}
+%\appendix
+% \include{appendices/appendix1/main}
+% \include{appendices/appendix2/main}
+% % any further appendices you decide to write (create appropriate directory structure, as with chapters)
+% \include{appendices/acronyms/main}
+% \include{appendices/symbols/main}
+% \include{appendices/derived_publications/main}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\ifpdf
+%\ifpdf
 \phantomsection
-\fi
+%\fi
 \label{index}
 \addcontentsline{toc}{chapter}{Index}
 \printindex

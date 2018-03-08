@@ -1,6 +1,5 @@
-NOTE: the text included in the \noopsort command is hidden when the reference is displayed in the bibliography, but is used when alphabetising the references. In the examples below, there is an author listed both as "Samuel Kaski" and "S. Kaski", which would ordinarily be alphabetised as different authors. By modifying both entries (using noopsort) so that they both appear to be "Samuel. Kaski" (by changing S. Kaski to S{amuel}. Kaski, and Samuel Kaski to Samuel{.} Kaski - braces indicate the hidden portions in each, respectively) to the alphabetiser, they are alphabetised correctly, while appearing in the correct form (as they were published).
+% NOTE: the text included in the \noopsort command is hidden when the reference is displayed in the bibliography, but is used when alphabetising the references. In the examples below, there is an author listed both as "Samuel Kaski" and "S. Kaski", which would ordinarily be alphabetised as different authors. By modifying both entries (using noopsort) so that they both appear to be "Samuel. Kaski" (by changing S. Kaski to S{amuel}. Kaski, and Samuel Kaski to Samuel{.} Kaski - braces indicate the hidden portions in each, respectively) to the alphabetiser, they are alphabetised correctly, while appearing in the correct form (as they were published).
 
-@preamble{ "\newcommand{\noopsort}[1]{} "# "\newcommand{\singleletter}[1]{#1} " }
 
 @article{ref:Alhoniemi:1999a,
 	author       = "Alhoniemi, Esa and Hollm{\'{e}}n, Jaakko and Simula, Olli and Vesanto, Juha",
@@ -31,7 +30,7 @@ NOTE: the text included in the \noopsort command is hidden when the reference is
 	volume       = "3",
 	pages        = "1--156",
 	year         = "2003",
-	note         = "Electronic journal. Available online: [\url{http://www.cse.ucsc.edu/NCS/vol3.html}] (Accessed: 21~" # jul # "~2003)"
+	note         = "Electronic journal. Available online: [\url{http://www.cse.ucsc.edu/NCS/vol3.html}] (Accessed: 21~Jul~2003)"
 }
 
 @incollection{ref:Clark:1989,
@@ -62,7 +61,7 @@ NOTE: the text included in the \noopsort command is hidden when the reference is
 	publisher    = "World Scientific",
 	address      = "London, England",
 	pages        = "498--507",
-	month        = "\linebreak 11--13~" # oct,
+	month        = "\linebreak 11--13~",
 	year         = "1995"
 }
 
@@ -81,7 +80,7 @@ NOTE: the text included in the \noopsort command is hidden when the reference is
 	institution  = "Department of Computer Science and Engineering, University of Washington",
 	address      = "Seattle, Washington, United States of America",
 	number       = "01-03-02",
-	month        = "26~" # apr,
+	month        = "26~Apr",
 	year         = "1999"
 }
 
@@ -100,5 +99,5 @@ NOTE: the text included in the \noopsort command is hidden when the reference is
 	author       = "Aha, David W. and Blake, Catherine L. and Hettich, Seth J. and Keogh, Eamonn J. and Merz, Christopher J. and Murphy, Patrick M.",
 	title        = "{UCI} Repository of Machine Learning Databases",
 	year         = "1998",
-	note         = "Department of Information and Computer Sciences, University of California, Irvine, United States of America. Available online: [\url{http://www.ics.uci.edu/~mlearn/MLRepository.html}] (Accessed: 13~" # feb # "~2004)"
+	note         = "Department of Information and Computer Sciences, University of California, Irvine, United States of America. Available online: [\url{http://www.ics.uci.edu/~mlearn/MLRepository.html}] (Accessed: 13~Feb~2004)"
 }
