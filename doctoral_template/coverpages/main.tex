@@ -21,9 +21,9 @@
 	\setlength{\baselineskip}{1.3\originalbaselineskip}
 	\begin{center}
 		\textsf{Submitted in partial fulfillment of the requirements for the degree\\
-		Philosophiae Doctor (Computer Science)\\
-		in the Faculty of Engineering, Built Environment and Information Technology\\
-		University of Pretoria, Pretoria}
+		\directlua{value(document.degree_name)}\\
+		in the \directlua{value(faculty)}\\
+		\directlua{value(institution)}, \directlua{value(location)}}
 	\end{center}
 	\vspace{0.15cm}
 	\centerline{
@@ -43,7 +43,7 @@
 	\parbox{\textwidth}{
 		\fontsize{9}{10pt}
 		\selectfont
-		\directlua{value(author)}. \directlua{value(title)}. Master's dissertation, University of Pretoria, Department of Computer Science, Pretoria, South Africa, April 2008.
+		\directlua{value(author)}. \directlua{value(title)}. \directlua{value(document.document)}, \directlua{value(institution)}, \directlua{value(department)}, \directlua{value(location)}, April 2008.
 	}\\*[10.5mm]
 	Electronic, hyper-linked versions of this dissertation are available on-line, as Adobe PDF files, at:\\*[2.5mm]
 	\parbox{\textwidth}{

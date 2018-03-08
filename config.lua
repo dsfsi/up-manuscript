@@ -5,6 +5,7 @@
 -- Author of the work
 author = "Joseph Thomas Bloggs"
 
+-- Author email address
 email = "jtbloggs@somewhere.co.za"
 
 -- Basic document title
@@ -18,6 +19,18 @@ large_title = [[
   A Very Long MSc Dissertation\\
   With a Long Title
 ]]
+
+-- Name of the institution
+institution = "University of Pretoria"
+
+-- Name of the faculty
+faculty = "Faculty of Engineering, Built Environment and Information Technology"
+
+-- Name of the department
+department = "Department of Computer Science"
+
+-- Location of the institution
+location = "Pretoria, South Africa"
 
 -- The list of files to include for the abstract. This is usually a
 -- single file, but more can be specified, if needed.
@@ -33,3 +46,17 @@ main_includes =
   { "content/t.tex"
   , "content/x.tex"
   }
+
+degree = {
+   msc = {
+      degree_name = "Master of Science (Computer Science)",
+      document = "Master's dissertation"
+   },
+
+   phd = {
+      degree_name = "Philosophiae Doctor (Computer Science)",
+      document = "Philosophiae Doctor thesis"
+   }
+}
+
+document = degree.msc
