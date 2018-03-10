@@ -21,3 +21,11 @@ end
 function value(key)
    tex.sprint(key)
 end
+
+function bibliography()
+   for _, i in ipairs(bibliography_includes) do
+      if i then
+         tex.sprint("\\bibliography{../" .. i .. "}")
+      end
+   end
+end

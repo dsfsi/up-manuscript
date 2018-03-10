@@ -47,7 +47,13 @@ main_includes =
    , "content/x.tex"
    }
 
-appendix_includes = { "content/appendix.tex" }
+appendix_includes =
+   { "content/appendix.tex"
+   }
+
+bibliography_includes =
+   { "content/bibliography.bib"
+   }
 
 degree = {
    msc = {
