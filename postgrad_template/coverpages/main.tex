@@ -1,0 +1,171 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\negativetitlepageoffset}
+\setlength{\negativetitlepageoffset}{-5cm}
+
+\begin{titlepage}
+	\ \vspace{\negativetitlepageoffset}
+	\vspace{\stretch{1}}
+	\setlength{\baselineskip}{2.4\originalbaselineskip}
+	\begin{center}
+		\textsf{\huge \directlua{value(large_title)}}
+	\end{center}
+	\begin{center}
+		\textsf{by}
+	\end{center}
+	\begin{center}
+		\textsf{\large \directlua{value(author)}}
+	\end{center}
+	\vspace{\stretch{1}}
+	\setlength{\baselineskip}{1.3\originalbaselineskip}
+	\begin{center}
+		\textsf{Submitted in partial fulfillment of the requirements for the degree\\
+		\directlua{value(document.degree_name)}\\
+		in the \directlua{value(faculty)}\\
+		\directlua{value(institution)}, \directlua{value(location)}}
+	\end{center}
+	\vspace{0.15cm}
+	\centerline{
+		\textsf{April 2008}
+	}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\newpage
+
+\textsf{\small
+	\vfill
+	\noindent Publication data:\\*[2.5mm]
+	\parbox{\textwidth}{
+		\fontsize{9}{10pt}
+		\selectfont
+		\directlua{value(author)}. \directlua{value(title)}. \directlua{value(document.document)}, \directlua{value(institution)}, \directlua{value(department)}, \directlua{value(location)}, April 2008.
+	}\\*[10.5mm]
+	Electronic, hyper-linked versions of this dissertation are available on-line, as Adobe PDF files, at:\\*[2.5mm]
+	\parbox{\textwidth}{
+		\fontsize{9}{9.5pt}
+		\selectfont
+		\url{http://cirg.cs.up.ac.za/}\\*[1.5mm]
+		\url{http://upetd.up.ac.za/UPeTD.htm}
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\begin{center}
+	{\large\bf \directlua{value(title)}}
+\end{center}
+\begin{center}by\end{center}
+\begin{center}
+	{\directlua{value(author)}}\\
+		E-mail: \href{mailto:\directlua{value(email)}}{\directlua{value(email)}}
+\end{center}
+\vspace{1cm}
+\begin{center}{\large\bf Abstract}\end{center}
+\directlua{input_all(abstract_includes)}
+\noindent\
+
+\noindent{\bf Keywords:} First keyword, second keyword, final keyword.
+
+\vfill
+\noindent
+{\bf\parbox{26.8mm}{Supervisors}:} Prof.~S. U. P. Visor \\* % only provide titles of Prof. or Dr. (not Mr.)
+{\bf\parbox{28.55mm}{~}} Dr.~A. N. Other \\*
+%{\bf\parbox{26.8mm}{Supervisor}:} Prof.~S. U. P. Visor \\* % if you only have a single supervisor
+{\bf\parbox{26.8mm}{Department}:} Department of Computer Science \\*
+{\bf\parbox{26.8mm}{Degree}:} Philosophiae Doctor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\ \vspace{\stretch{1}}
+
+\begin{quotation}
+``An interesting quotation (preferably related to the theme of your research) if you would like to include one. If you choose not to include a quotation (or can't find anything relevant), remove this page.''
+\end{quotation}
+\begin{flushright}
+Quote attribution or source (1892)
+\end{flushright}
+
+\vspace{1cm}
+
+\begin{quotation}
+``Another quote, if you feel like it\ldots''
+\end{quotation}
+\begin{flushright}
+Another Quote attribution or source (1890)
+\end{flushright}
+
+\ \vspace{\stretch{1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\begin{center}{\Large\bf Acknowledgments}\end{center}
+
+\vspace{0.3cm}
+
+\noindent If you wish to include any acknowledgments to anyone you feel was instrumental in the completion of the dissertation (or your continued survival through it's completion):
+\begin{itemize}
+	\item First person (or institution) you'd like to thank, and reasons;
+
+	\item Second person (or institution), and reasons;
+
+	\item Final person (or institution), and reasons.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\pagestyle{plain}
+\pagenumbering{roman}
+\setcounter{page}{1}
+\pdfbookmark[0]{Contents}{contents}
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Graphs}
+\listof{graph}{List of Graphs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Algorithms}
+\listof{algorithm}{List of Algorithms}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
