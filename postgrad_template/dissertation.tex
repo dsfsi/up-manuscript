@@ -5,28 +5,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[12pt, a4paper, oneside]{report}
-% remove comment, below, to compile only the specified chapter (for draft chapter compilations)
-%\includeonly{chapters/introduction/main}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%   Basic Packages and Package Settings     %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage{luatex85}
+\usepackage{luatex85}
 
-\usepackage{float}                                                     % customised float support
-\usepackage{fancyhdr}                                                  % improved header and footer support
-\usepackage{amssymb}                                                   % American Mathematical Society symbols
-\usepackage{amsmath}                                                   % American Mathematical Society environments
-\usepackage{url}                                                       % URL typesetting
-\usepackage{texnames}                                                  % BIBTeX, SliTeX, AMSTeX, PiCTeX and TeXsis logos
-\usepackage{verbatim}                                                  % multi-line comments
+\usepackage[utf8]{inputenc}
+\usepackage{float}                      % customised float support
+\usepackage{fancyhdr}                   % improved header and footer support
+\usepackage{amssymb}                    % American Mathematical Society symbols
+\usepackage{amsmath}                    % American Mathematical Society environments
+\usepackage{url}                        % URL typesetting
+\usepackage{texnames}                   % BIBTeX, SliTeX, AMSTeX, PiCTeX and TeXsis logos
+\usepackage{verbatim}                   % multi-line comments
 \usepackage[
-toc=true,
-xindy,
-index
+  toc=true,
+  xindy,
+  index
 ]{glossaries}
 \makeglossaries
+
+\usepackage{csquotes}                   % Automatic quoting, based on babel language
+\usepackage[UKenglish,USenglish]{babel}
+\usepackage[
+  backend=biber,
+  doi=true,
+  \directlua{value(bibliography_options)}
+]{biblatex}
+
+\directlua{bibliography_items()}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%          PDFLaTeX-Specific setup          %%%
@@ -35,33 +44,32 @@ index
 \newcommand{\noopsort}[1]{}
 
 \usepackage[
-        pdftex,                                                                                                                 % hyperlinked references for PDF output
-        bookmarks=true,                                                                                         % (option) build bookmarks
-        bookmarksnumbered=true                                                                          % (option) add section numbers to bookmarks
+        pdftex,                         % hyperlinked references for PDF output
+        bookmarks=true,                 % (option) build bookmarks
+        bookmarksnumbered=true          % (option) add section numbers to bookmarks
 ]{hyperref}
 
-\usepackage{pdfpages}                                                                                   % required for PDF watermarking
-\usepackage{epstopdf}                                                                                   % automatic conversion of EPS images
-\usepackage[pdftex]{thumbpdf}                                                                   % thumbnail generation for PDF files
-\usepackage{pdflscape}                                                                                  % required by thumbpdf
-\usepackage[all]{hypcap}                                                                                % correct PDF figure links to top of image
+\usepackage{pdfpages}                   % required for PDF watermarking
+%\usepackage[pdftex]{thumbpdf}           % thumbnail generation for PDF files
+\usepackage{pdflscape}                  % required by thumbpdf
+\usepackage[all]{hypcap}                % correct PDF figure links to top of image
 
 % setup options for hyperlinks
 
 \hypersetup{
-        pdfhighlight=/N,                                                                                                % (option) no visual cue on clicking link
-        pdffitwindow=true,                                                                                      % (option)
-        pdfstartview=Fit,                                                                                               % (option) fit initial view to page
-        plainpages=false,                                                                                               % (option) prevent hyperref page number changes
-        breaklinks=true,                                                                                                % (option) allow link breaking across lines
-        colorlinks=true,                                                                                                % (option) color link text only (no borders)
-        pageanchor=false,                                                                                               % (option) turns off page referencing for title page
-        linkcolor=blue,                                                                                         % (option) internal link color
-        citecolor=blue,                                                                                         % (option) citation link color
-        filecolor=blue,                                                                                         % (option) file link color
-        menucolor=blue,                                                                                         % (option) Acrobat menu link color
-        pagecolor=blue,                                                                                         % (option) page link color
-        urlcolor=blue,                                                                                                  % (option) URL link color
+        pdfhighlight=/N,                % (option) no visual cue on clicking link
+        pdffitwindow=true,              % (option)
+        pdfstartview=Fit,               % (option) fit initial view to page
+        plainpages=false,               % (option) prevent hyperref page number changes
+        breaklinks=true,                % (option) allow link breaking across lines
+        colorlinks=true,                % (option) color link text only (no borders)
+        pageanchor=false,               % (option) turns off page referencing for title page
+        linkcolor=blue,                 % (option) internal link color
+        citecolor=blue,                 % (option) citation link color
+        filecolor=blue,                 % (option) file link color
+        menucolor=blue,                 % (option) Acrobat menu link color
+        %pagecolor=blue,                 % (option) page link color
+        urlcolor=blue,                  % (option) URL link color
 }
 
 % PDF meta-data settings
@@ -74,10 +82,7 @@ index
 }
 
 % force LaTeX-compliant spacing
-%\directlua { tex.enableprimitives('',tex.extraprimitives()) }
-
-
-%\pdfadjustspacing=1
+\pdfadjustspacing=1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                  Lengths                  %%%
@@ -104,7 +109,7 @@ index
 %%%               List Counters               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcounter{listcount}
+%\newcounter{listcount}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%         Index and Glossary Terms          %%%
@@ -187,12 +192,12 @@ index
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{coverpages/main}
+\input{coverpages/main}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\hypersetup{pageanchor=true}                                                                    % (option) turn page referencing back on for chapters
+\hypersetup{pageanchor=true}                                % (option) turn page referencing back on for chapters
 
 \pagestyle{fancy}
 \fancypagestyle{headings}{
@@ -213,8 +218,9 @@ index
 
 \label{bibliography}
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{plain}
-\directlua{bibliography()}
+%\bibliographystyle{plain}
+%\directlua{bibliography()}
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

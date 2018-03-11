@@ -22,10 +22,10 @@ function value(key)
    tex.sprint(key)
 end
 
-function bibliography()
+function bibliography_items()
    for _, i in ipairs(bibliography_includes) do
       if i then
-         tex.sprint("\\bibliography{../" .. i .. "}")
+         tex.sprint("\\addbibresource{../" .. i .. "}")
       end
    end
 end

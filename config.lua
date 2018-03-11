@@ -51,6 +51,21 @@ appendix_includes =
    { "content/appendix.tex"
    }
 
+-- These are the package options passed to biblatex.
+-- Any bibliography related options should be defined here. It should
+-- also be noted that the backend option has already been set to
+-- the package "biber".
+--
+-- biblatex is strictly the replacement for the normal bibtex process
+-- and you are encouraged to familiarize yourself with the way biblatex
+-- operates. It is largely unchanged from a usage perspective, but any
+-- customization will be done in a different way
+--
+-- The old classic bibtex styles (like 'plain') are still available using
+-- the biblatex-trad package. For example, the old plain is now 'trad-plain'
+bibliography_options = "style=numeric"
+
+-- List of bibliography files
 bibliography_includes =
    { "content/bibliography.bib"
    }

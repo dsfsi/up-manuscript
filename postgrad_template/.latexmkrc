@@ -2,6 +2,7 @@ $pdflatex = 'lualatex -interaction=nonstopmode %O --shell-escape %S';
 $pdf_mode = 1;
 $out_dir = '../build';
 $aux_dir = $out_dir;
+$recorder = 1;
 
 @default_files = ('dissertation.tex');
 
@@ -20,3 +21,4 @@ push @generated_exts, 'glo', 'gls', 'glg';
 push @generated_exts, 'acn', 'acr', 'alg';
 
 $clean_ext .= ' %R.ist %R.xdy';
+
