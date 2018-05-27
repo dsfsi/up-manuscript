@@ -20,7 +20,7 @@ script:
   # - rm -rf dist || true
   # Linux static executable
   - docker pull haskell
-  - docker run -it haskell /bin/sh -c "cd /home/cli && stack build"
+  - docker run -it haskell /bin/sh -c "cd cli && stack build"
   # Misc packaging
   #- ./.prepare_deploy
 
