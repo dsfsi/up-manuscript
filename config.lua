@@ -43,12 +43,16 @@ abstract_includes =
 -- will be included verbatim. That is, the order of the list items
 -- does matter.
 main_includes =
-   { "content/t.tex"
-   , "content/x.tex"
+   {
    }
 
 appendix_includes =
    { "content/appendix.tex"
+   }
+
+glossary_includes =
+   { "content/glossary.tex"
+   , "content/acronyms.tex"
    }
 
 -- These are the package options passed to biblatex.

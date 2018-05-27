@@ -1,4 +1,4 @@
-$pdflatex = 'lualatex -interaction=nonstopmode %O --shell-escape %S';
+$pdflatex = 'lualatex -interaction=nonstopmode -halt-on-error %O --shell-escape %S';
 $pdf_mode = 1;
 $out_dir = '../build';
 $aux_dir = $out_dir;

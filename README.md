@@ -1,2 +1,2 @@
-# cirg-thesis
-Template for CIRG Ph.D thesis manuscripts
+# Manuscript
+Templates for different manuscript targets
