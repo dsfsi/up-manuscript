@@ -9,28 +9,28 @@ author = "Joseph Thomas Bloggs"
 email = "jtbloggs@somewhere.co.za"
 
 -- Basic document title
-title = "A Very Long MSc Dissertation With a Long Title"
+title = "A Very Long Title that is a Long Title"
 
 -- The large title is for display on the cover page of the document
 -- This should match the content of `title`, however, it may be required
 -- to add some newline breaks to make sure the cover page title looks
 -- appealing. This is a multi-line string between the square bracket pair
 large_title = [[
-  A Very Long MSc Dissertation\\
+  A Very Long Title\\
   With a Long Title
 ]]
 
 -- Name of the institution
-institution = "University of Pretoria"
+institution = "Institution / University / or Similar"
 
 -- Name of the faculty
-faculty = "Faculty of Engineering, Built Environment and Information Technology"
+faculty = "Faculty of Doing Things"
 
 -- Name of the department
-department = "Department of Computer Science"
+department = "Department of department"
 
 -- Location of the institution
-location = "Pretoria, South Africa"
+location = "Place of things"
 
 -- The list of files to include for the abstract. This is usually a
 -- single file, but more can be specified, if needed.
@@ -86,4 +86,15 @@ degree = {
    }
 }
 
-document = degree.msc
+article = {
+   ieee = {
+      mode = "conference",
+      paper = "letterpaper",
+      column = "twocolumn"
+   },
+
+   llncs = {
+   }
+}
+
+document = article.ieee --degree.msc
