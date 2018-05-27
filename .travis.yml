@@ -12,7 +12,7 @@ before_install:
   - test "$TRAVIS_BRANCH" = master && test -n "$TRAVIS_TAG" && TAGS="$TAGS stable" || true
 
 script:
-  - mkdir deploy
+  # - mkdir deploy
   # Windows .exe
   # - docker pull koalaman/winghc
   # - docker run --user="$UID" --rm -v "$PWD:/appdata" koalaman/winghc cuib
@@ -20,7 +20,7 @@ script:
   # - rm -rf dist || true
   # Linux static executable
   - docker pull haskell
-  - docker run -it haskell "cd cli && stack build"
+  - docker run -it haskell /bin/sh -c "cd /home/cli && stack build"
   # Misc packaging
   #- ./.prepare_deploy
 
