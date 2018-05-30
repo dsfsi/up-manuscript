@@ -5,7 +5,7 @@ module Main where
 import Control.Exception
 import Data.Version (showVersion)
 import Data.Text(Text)
-import Paths_cli (version)
+import Paths_manuscript (version)
 import Prelude hiding (FilePath)
 import Safe (readMay)
 import System.Exit (exitSuccess)

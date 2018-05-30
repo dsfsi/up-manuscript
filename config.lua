@@ -90,7 +90,8 @@ article = {
    ieee = {
       mode = "conference",
       paper = "letterpaper",
-      column = "twocolumn"
+      column = "twocolumn",
+      keywords = ""
    },
 
    llncs = {

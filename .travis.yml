@@ -1,43 +1,32 @@
-sudo: required
+# Use new container infrastructure to enable caching
+sudo: false
 
-language: sh
+# Choose a lightweight base image; we provide our own build tools.
+language: c
 
-services:
-  - docker
+# GHC depends on GMP. You can add other dependencies here as well.
+addons:
+  apt:
+    packages:
+    - libgmp-dev
+
+# The different configurations we want to test. You could also do things like
+# change flags or use --stack-yaml to point to a different file.
+env:
+- ARGS=""
 
 before_install:
-  - TAGS=""
-  - test "$TRAVIS_BRANCH" = master && TAGS="$TAGS latest" || true
-  - test -n "$TRAVIS_TAG"          && TAGS="$TAGS $TRAVIS_TAG" || true
-  - test "$TRAVIS_BRANCH" = master && test -n "$TRAVIS_TAG" && TAGS="$TAGS stable" || true
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-script:
-  # - mkdir deploy
-  # Windows .exe
-  # - docker pull koalaman/winghc
-  # - docker run --user="$UID" --rm -v "$PWD:/appdata" koalaman/winghc cuib
-  # - for tag in $TAGS; do cp "dist/build/ShellCheck/shellcheck.exe" "deploy/shellcheck-$tag.exe"; done
-  # - rm -rf dist || true
-  # Linux static executable
-  - docker pull haskell
-  - docker run -it haskell /bin/sh -c "cd cli && stack build"
-  # Misc packaging
-  #- ./.prepare_deploy
+# This line does all of the work: installs GHC if necessary, build the library,
+# executables, and test suites, and runs the test suites. --no-terminal works
+# around some quirks in Travis's terminal implementation.
+script: stack $ARGS --no-terminal --install-ghc test --haddock
 
-after_failure:
-  - id
-  - pwd
-  - df -h
-  - find . -name '*.log' -type f -exec grep "" /dev/null {} +
-  - find . -ls
-
-# deploy:
-#   provider: gcs
-#   skip_cleanup: true
-#   secret_access_key:
-#     secure:
-#   bucket: shellcheck
-#   local-dir: deploy
-#   on:
-#     repo: koalaman/shellcheck
-#     all_branches: true
+# Caching so the next build will be fast too.
+cache:
+  directories:
+  - $HOME/.stack
