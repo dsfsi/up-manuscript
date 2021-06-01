@@ -1,2 +1,3 @@
-# cirg-thesis
-Template for CIRG Ph.D thesis manuscripts
+# Thesis for University of Pretoria
+
+Forked from [cirg-thesis](https://github.com/ciren/manuscript?files=1)
